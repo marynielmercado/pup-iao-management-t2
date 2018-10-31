@@ -1,0 +1,246 @@
+
+    <head>
+        <meta charset="UTF-8">
+
+        <title>FUND RAISING ACTIVITY</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+         <script type="text/javascript" src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+
+
+    </head>
+    <style type="text/css"> 
+nav {
+    background: linear-gradient(to top, #66ffcc 0%, #33cc33 100%);
+}
+.brandname{
+   position: absolute;
+    top: 40px;
+    left: 150px;
+    color: firebrick;
+    white-space: nowrap;
+  color:firebrick; 
+  font-size: 20pt; 
+  font-family: "Times New Roman", Times, serif;
+font-weight: bold;
+}
+.slogan {
+    position: absolute;
+    top: 70px;
+    left: 150px;
+    color: #990000;
+    white-space: nowrap;
+    font-size: 15pt;
+    font-family: Cinzel,Serif;
+ }  
+ .center {
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+} 
+.subbutton{
+  padding: 5px 5px;
+  font-size: 18px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: white;
+  background-color: green;
+  border: none;
+  border-radius: 8px;
+}
+.footer-outer{
+  width: 100% height:100%;
+  background: linear-gradient(to top, #66ffcc 0%, #33cc33 100%);
+}
+
+.footer-inner{
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 0px;
+  margin-bottom: 0%;
+  padding: 10px;
+  text-align: left;
+}
+
+.footer-inner .mediaicons img{
+  border:3px solid transparent;
+ }
+ 
+ .footer-inner .mediaicons img:hover{
+  border:3px solid green;
+  border-radius: 100px;
+ }
+
+ .footer-inner table tr{
+  padding:30px;
+ }
+.footer-inner table tr #footerdetails a:hover{
+  text-decoration: underline;
+  color: gold;
+}
+.footer-inner table tr #footerdetails a:last-child{
+  text-decoration: none;
+}
+body{
+  background:  #f5f5f0;
+}
+</style>
+    <body>
+
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <!-- Brand/logo -->
+  <a class="navbar-brand" href="#">  <img src="pup-logo.png" alt="Logo" style="width:100px; height: 100px;"> </a>
+     <P class="slogan"> INTERNAL AUDIT OFFICE </P> 
+ <!-- Links -->
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="brandname" href="#" > POLYTECHNIC UNIVERSITY OF THE PHILIPPINES  </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#"></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#"></a>
+    </li>
+  </ul>
+  <a class="navbar-brand" href="#">  <img src="iao-logo.png" alt="Logo" style="margin-left: 1075px; width:100px; height: 100px;"> </a>
+</nav>
+
+<br>
+<br>
+<br>
+<form action = '/submitButton' method= 'POST'> 
+<center> <H1> FUND RAISING ACTIVITY </H1> 
+</center> 
+        <div id="uploading" class="center"> 
+
+    <label> Tracking Number </label><br>
+    <input type="text" class="form-control" name="tracking_number" required > <br>
+
+    <label> REQUESTOR DETAILS </label><br>
+    <label> Name  </label><br>
+    <input type="text" class="form-control" name="requestor_name" required > <br>
+    <label> Email  </label><br>
+    <input type="text" class="form-control" name="email" required > <br>
+<label> Phone  </label><br>
+    <input type="text" class="form-control" name="phone" required > <br>
+    <label> Designation  </label><br>
+     <select class="form-control" name="designation" >       
+    <option selected="Student" > Student </option>
+  <option > Faculty </option>
+  <option > Admin </option>
+    </select><br>
+<label> Branch/Campus  </label><br>
+    <select class="form-control" name="designation" >       
+    <option selected="Main Campus" > Main Campus </option>
+  <option > Others </option>
+    </select><br>
+    <label> Sector  </label><br>
+    <select class="form-control" name="designation" >       
+    <option selected="Office of the President" > Office of the President </option>
+  <option > Office of the Executive Vice-President </option>
+  <option > Office of the Vice-President for Academic Affairs </option>
+    <option > Office of the Vice-President for Student Affairs and Services </option>
+     <option > Office of the Vice-President for Administration </option>
+       <option > Office of the Vice-President for Finance </option>
+     <option > Office of the Vice-President for Research, Extension and Development </option>
+     <option > Office of the Vice-President for Branches and Satellite Campuses </option>
+    </select><br>
+  <label> REQUEST DETAILS </label><br>
+    <label> Event Name  </label><br>
+    <input type="text" class="form-control" name="event_name" required > <br>
+    <label> Event Start Date </label><br>
+    <input type="date" class="form-control" name="event_start_date" required > <br>
+<label> Event End Date </label><br>
+    <input type="date" class="form-control" name="event_end_date" required > <br>
+
+ <label> NOTES TO THE ADMIN </label><br>
+    <textarea name="event_name" class="form-control"> </textarea>  <br>
+
+  <!-- <progress style= "margin-left: 40% " value="0" max="100" id="progressBar">0%</progress> <br>
+   -->              <p for="submit" style= "margin-left: 45% color: red; " >* Note: Files should be compressed and in zip file. File name should be your tracking number. *  <br> </p>
+                <input  style= "margin-left: 40% "type="file" accept=”.zip” id="submitButton"/>  <br><br>
+                 <button class="subbutton" style= "margin-left: 45% "type="submit"  id="submit" > SUBMIT </button>
+  
+          </div>  
+</form>
+   <!-- <button class="subbutton" style= "margin-left: 45% "type="submit" value="upload" id="getURL" onclick="retrieve()" > get </button>
+    -->            
+<!--   <script type="text/javascript" src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
+
+    <script type="text/javascript"> 
+
+
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCubNahS4iwVb4UuE6IiuxGEA0myfdde8E",
+    authDomain: "iao-fra.firebaseapp.com",
+    databaseURL: "https://iao-fra.firebaseio.com",
+    projectId: "iao-fra",
+    storageBucket: "iao-fra.appspot.com",
+    messagingSenderId: "954236925014"
+  };
+  firebase.initializeApp(config);
+
+var database = firebase.database();
+const storage = firebase.storage()
+const submitButton = document.getElementById('submitButton');
+submitButton.addEventListener('change', (e)=>{
+  let file = e.target.files[0];
+  let locationRef = storage.ref('testv5/' + file.name)
+  let storesRef = database.ref.child('fra')
+  let NewstoresRef = storesRef.push()
+  let task = locationRef.put(file)
+  task.on('state_changed', 
+    function progress(snapshot){ //progress
+      let per = (snapshot.bytesTransferred / snapshot.totalBytes) *100;
+      uploader.value = per;
+    },
+    function error(error){ },
+    function complete_push(){
+       storageRef.getMetadata().then(metadata=>{
+         ref.push({
+          url: metadata.downloadURLs[0]
+      //    console.log('COMPLETED');
+        })
+    })
+
+  }
+  // function retrieve(){
+  //    var storageRef = firebase.storage.ref("testv5/")
+  // }
+)
+})
+    </script> -->
+<br><br><br><br><br>
+<footer class="footer-outer">
+      <div class="footer-inner">
+        <table align="center">
+        <tr><td id="footerdetails">
+        <a style="color:maroon;" >ABOUT US </a>
+        <br>
+        <a style="color:maroon;" >CONTACT US</a>
+        <br>
+        <a style="color:maroon;" >COMMENTS AND SUGGESTIONS</a>
+        <br><br>
+        <a style="color:maroon;" >©Copyright 2018: Englatera_Kart_Mercado_Maryniel</a>
+        </td> 
+        <td style="text-align: right;">
+        <a class="mediaicons" href="http://www.facebook.com" target="_blank"> <img style="height:100px;width:100px;" src="fb.png"></a>
+        <a class="mediaicons" href="http://www.gmail.com" target="_blank"><img style="height:100px;width:100px;" src="mail.png"></a>
+        <a class="mediaicons" href="http://www.twitter.com" target="_blank"><img style="height:100px;width:100px;" src="twitter.png"></a>
+        </td></tr>
+        </table>
+      </div>
+
+    </footer>
+<!--         <script type="text/javascript" src="script.js"></script>
+ -->    </body>
+

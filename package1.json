@@ -1,0 +1,26 @@
+{
+  "name": "Internal Audit Office",
+  "version": "0.0.1",
+  "description": "FRA",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
+    "multer": "^1.2.0"
+  },
+  "author": "Maryniel Mercado",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marynielmercado/pup-iao-management-t2.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marynielmercado/pup-iao-management-t2/issues"
+  },
+  "homepage": "https://github.com/marynielmercado/pup-iao-management-t2#readme"
+}
