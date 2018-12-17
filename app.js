@@ -110,11 +110,12 @@ client.connect()
   firebase.initializeApp(config);
 
 
-
+ // var storage = firebase.storage();
 
 
 app.post('/send', function (req, res) {
-   console.log(req.body);
+
+console.log(req.body);
   //console.log(url);
 
 var receivers = ['team2.dbms1819@gmail.com', req.body.email];
@@ -147,14 +148,13 @@ var receivers = ['team2.dbms1819@gmail.com', req.body.email];
     if (error) {
       res.redirect('/fail');
     }
-
-
+    
  var values = [];
-  values = [req.body.tracking_number, req.body.requestor_name, req.body.email, req.body.phone, req.body.designation, req.body.campus, req.body.sector, req.body.event_name, req.body.event_start_date, req.body.event_end_date, req.body.notes,'incomplete'];
+  values = [req.body.tracking_number, req.body.requestor_name, req.body.email, req.body.phone, req.body.designation, req.body.campus, req.body.sector, req.body.event_name, req.body.event_start_date, req.body.event_end_date, req.body.notes, req.body.url, 'incomplete'];
   console.log(req.body);
   console.log(values);
 
-  client.query("INSERT INTO requests1 (tracking_number,requestor,email, phone, designation, branch, sector, event_name, event_start, event_end, notes,status) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)",values,(err,res)=>{
+  client.query('INSERT INTO requests1 (tracking_number,requestor,email, phone, designation, branch, sector, event_name, event_start, event_end, notes, url, status) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)',values,(err,res)=>{
     if (err){
       console.log(err.stack)
     }
@@ -168,9 +168,11 @@ var receivers = ['team2.dbms1819@gmail.com', req.body.email];
  });
 
 
+
+
 app.get('/admin', function (req, res) {
    
-  client.query('SELECT id, tracking_number,requestor,event_name,event_start,notes,request_date,status FROM requests1 ORDER BY id DESC', (req, data) => {
+  client.query('SELECT id, tracking_number,requestor,event_name,event_start,notes,request_date,status, url FROM requests1 ORDER BY id DESC', (req, data) => {
    var list = [];
     for (var i = 1; i < data.rows.length + 1; i++) {
       list.push(data.rows[i - 1]);
@@ -202,38 +204,37 @@ app.get('/requests/:idNew', function (req, res) {
 
 app.post('/update_status', function (req, res) {
 
-// var receivers = ['team2.dbms1819@gmail.com', req.body.email];
+var receivers = ['team2.dbms1819@gmail.com', req.body.email];
 
-//   let mailOptions, transporter;
-//   transporter = nodemailer.createTransport({
-//     host: 'smtp.gmail.com',
-//     port: 465,
-//     secure: true,
-//     auth: {
-//       user: 'team2.dbms1819@gmail.com',
-//       pass: 'database1819'
-//     }
-//   });
-//   console.log(req.body);
+  let mailOptions, transporter;
+  transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: {
+      user: 'team2.dbms1819@gmail.com',
+      pass: 'database1819'
+    }
+  });
+  console.log(req.body);
 
-//   mailOptions = {
-//     // from: req.body.FN+'  &lt; '+ req.body.LN +'   &lt;' + req.body.email +' &gt;', // sender address
-//     from: 'team2.dbms1819@gmail.com', // list of receivers
-//     to: receivers,
-//     subject: 'REQUEST STATUS CHANGED', // Subject line
-//     text: 'Request Details: \n Name:' + req.body.requestor_name + '\n Email:' + req.body.email + '\n Tracking Number:' + req.body.tracking_number + '\n Event Name:' + req.body.event_name + '\n Event Start Date:' + req.body.event_start_date + '\n Event End Date:' + req.body.event_end_date + '\n Status: Incomplete' 
+  mailOptions = {
+    // from: req.body.FN+'  &lt; '+ req.body.LN +'   &lt;' + req.body.email +' &gt;', // sender address
+    from: 'team2.dbms1819@gmail.com', // list of receivers
+    to: receivers,
+    subject: 'REQUEST STATUS CHANGED', // Subject line
+    text: 'Good day! \n We would like to inform you that the status of your request with the tracking Number of ' + req.body.tracking_number + ' has been changed. \n \n \n Internal Audit Office' 
 
-//   };
+  };
 
-//   console.log(mailOptions);
+  console.log(mailOptions);
 
-//   // send mail with defined transport object
-//   transporter.sendMail(mailOptions, function (error, response) {
-//     if (error) {
-//       res.redirect('/fail');
-//     }
+  // send mail with defined transport object
+  transporter.sendMail(mailOptions, function (error, response) {
+    if (error) {
+      res.redirect('/fail');
+    }
 
-//   var stat = 'complete';
   client.query("UPDATE requests1 SET status = 'complete' , update_date = NOW() WHERE id = "+ id1 + "", (err, res) => {
     if (err) {
       console.log(err.stack);
@@ -242,6 +243,8 @@ app.post('/update_status', function (req, res) {
     }
   });
     res.redirect('/admin');
+});
+
 });
 
 
@@ -262,7 +265,10 @@ app.post('/update_status', function (req, res) {
 
 
 app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname + '/trialv1.html'));
+    // res.sendFile(path.join(__dirname + '/trialv1.html'));
+     res.render('send_request', {
+//     title: 'INTERNAL AUDIT OFFICE'
+   });
 });
 
 

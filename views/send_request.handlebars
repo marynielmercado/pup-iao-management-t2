@@ -1,4 +1,4 @@
-
+ 
     <head>
         <meta charset="UTF-8">
 
@@ -17,6 +17,29 @@
 nav {
     background: linear-gradient(to top, #66ffcc 0%, #33cc33 100%);
 }
+
+#progress p.success
+{
+  background: #0c0 none 0 0 no-repeat;
+}
+
+#progress p.failed
+{
+  background: #c00 none 0 0 no-repeat;
+}
+
+
+#progress p
+{
+  display: block;
+  width: 240px;
+  padding: 2px 5px;
+  margin: 2px 0;
+  border: 1px inset #446;
+  border-radius: 5px;
+}
+
+
 .brandname{
    position: absolute;
     top: 40px;
@@ -39,8 +62,8 @@ font-weight: bold;
  }  
  .center {
     margin: auto;
-    width: 50%;
-    border: 3px solid green;
+    width: 25%;
+    border: 3px;
     padding: 10px;
 } 
 .subbutton{
@@ -90,8 +113,31 @@ font-weight: bold;
 body{
   background:  #f5f5f0;
 }
+
+.center {
+    margin-top:50px;   
+}
+
+.modal-header {
+  padding-bottom: 5px;
+}
+
+.modal-footer {
+      padding: 0;
+  }
+    
+.modal-footer .btn-group button {
+  height:40px;
+  border-top-left-radius : 0;
+  border-top-right-radius : 0;
+  border: none;
+  border-right: 1px solid #ddd;
+}
+  
+.modal-footer .btn-group:last-child > button {
+  border-right: 0;
+}
 </style>
-    <body>
 
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -116,11 +162,22 @@ body{
 <br>
 <br>
 <br>
-<form action = '/submitButton' method= 'POST'> 
-<center> <H1> FUND RAISING ACTIVITY </H1> 
-</center> 
-        <div id="uploading" class="center"> 
+<div class="center"> <button data-toggle="modal" data-target="#sendrequest" class="btn btn-primary center-block">Send Request </button></div>
 
+
+<!-- line modal -->
+<div class="modal fade" id="sendrequest" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      
+      <h3 class="modal-title" id="lineModalLabel">Fund Raising Activity</h3>
+      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+    </div>
+    <div class="modal-body">
+      
+       <!--  <div id="uploading" class="center">  -->
+<form method="post" action="/send">
     <label> Tracking Number </label><br>
     <input type="text" class="form-control" name="tracking_number" required > <br>
 
@@ -133,25 +190,33 @@ body{
     <input type="text" class="form-control" name="phone" required > <br>
     <label> Designation  </label><br>
      <select class="form-control" name="designation" >       
-    <option selected="Student" > Student </option>
-  <option > Faculty </option>
-  <option > Admin </option>
+    <option selected="Student" value="1" > Student </option>
+  <option value="2" > Faculty </option>
+  <option value="3" > Admin </option>
     </select><br>
 <label> Branch/Campus  </label><br>
-    <select class="form-control" name="designation" >       
-    <option selected="Main Campus" > Main Campus </option>
-  <option > Others </option>
-    </select><br>
+    <select class="form-control" name="campus" > 
+    
+                        {{#each branch}} 
+    <option> {{this.campus}} </option>
+  <option value="2"> Others </option>
+{{/each}}
+<!-- 
+<label> Branch/Campus  </label><br>
+    <select class="form-control" name="campus" >       
+    <option selected="Main Campus" value="1" > Main Campus </option>
+  <option value="2"> Others </option> -->
+    </select> <br> 
     <label> Sector  </label><br>
-    <select class="form-control" name="designation" >       
-    <option selected="Office of the President" > Office of the President </option>
-  <option > Office of the Executive Vice-President </option>
-  <option > Office of the Vice-President for Academic Affairs </option>
-    <option > Office of the Vice-President for Student Affairs and Services </option>
-     <option > Office of the Vice-President for Administration </option>
-       <option > Office of the Vice-President for Finance </option>
-     <option > Office of the Vice-President for Research, Extension and Development </option>
-     <option > Office of the Vice-President for Branches and Satellite Campuses </option>
+    <select class="form-control" name="sector" >       
+    <option selected="Office of the President" value="1 "> Office of the President </option>
+  <option value="2" > Office of the Executive Vice-President </option>
+  <option value= "3"> Office of the Vice-President for Academic Affairs </option>
+    <option value= "4" > Office of the Vice-President for Student Affairs and Services </option>
+     <option value= "5" > Office of the Vice-President for Administration </option>
+       <option value="6" > Office of the Vice-President for Finance </option>
+     <option value="7" > Office of the Vice-President for Research, Extension and Development </option>
+     <option  value="8" > Office of the Vice-President for Branches and Satellite Campuses </option>
     </select><br>
   <label> REQUEST DETAILS </label><br>
     <label> Event Name  </label><br>
@@ -162,23 +227,30 @@ body{
     <input type="date" class="form-control" name="event_end_date" required > <br>
 
  <label> NOTES TO THE ADMIN </label><br>
-    <textarea name="event_name" class="form-control"> </textarea>  <br>
+    <textarea name="notes" class="form-control"> </textarea>  <br>
 
-  <!-- <progress style= "margin-left: 40% " value="0" max="100" id="progressBar">0%</progress> <br>
-   -->              <p for="submit" style= "margin-left: 45% color: red; " >* Note: Files should be compressed and in zip file. File name should be your tracking number. *  <br> </p>
-                <input  style= "margin-left: 40% "type="file" accept=”.zip” id="submitButton"/>  <br><br>
-                 <button class="subbutton" style= "margin-left: 45% "type="submit"  id="submit" > SUBMIT </button>
-  
-          </div>  
+           <p for="submit" style= "margin-left: 45% color: red; " >* Note: Files should be compressed and in zip file. File name should be your tracking number. *  <br> </p>
+
+
+                <input  style= "margin-left: 40%" type="file" accept=”.zip” id="loadFile" name="loadFile">  <br> <br>
+                <br>
+                <input  class="form-control" hidden type="text" id="url" name="url" required> <br>
+                 <button class="subbutton" style= "margin-left: 45%" type="submit" value="upload" id="submit" > SUBMIT </button>
+
 </form>
-   <!-- <button class="subbutton" style= "margin-left: 45% "type="submit" value="upload" id="getURL" onclick="retrieve()" > get </button>
-    -->            
-<!--   <script type="text/javascript" src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
+</div>
+</div>
+</div>
+</div>
+</div>
+  <script type="text/javascript" src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
 
-    <script type="text/javascript"> 
-
-
+ <script type="text/javascript" > 
   // Initialize Firebase
+  //var urlpass = [];
+
+// var url;
+// var urlpass;
   var config = {
     apiKey: "AIzaSyCubNahS4iwVb4UuE6IiuxGEA0myfdde8E",
     authDomain: "iao-fra.firebaseapp.com",
@@ -188,37 +260,52 @@ body{
     messagingSenderId: "954236925014"
   };
   firebase.initializeApp(config);
+ var storage = firebase.storage()
+document.getElementById('loadFile').addEventListener('change', upload);
 
-var database = firebase.database();
-const storage = firebase.storage()
-const submitButton = document.getElementById('submitButton');
-submitButton.addEventListener('change', (e)=>{
-  let file = e.target.files[0];
-  let locationRef = storage.ref('testv5/' + file.name)
-  let storesRef = database.ref.child('fra')
-  let NewstoresRef = storesRef.push()
-  let task = locationRef.put(file)
-  task.on('state_changed', 
-    function progress(snapshot){ //progress
-      let per = (snapshot.bytesTransferred / snapshot.totalBytes) *100;
-      uploader.value = per;
-    },
-    function error(error){ },
-    function complete_push(){
-       storageRef.getMetadata().then(metadata=>{
-         ref.push({
-          url: metadata.downloadURLs[0]
-      //    console.log('COMPLETED');
-        })
-    })
+    function upload() {
+        //  const formData = new FormData();
 
-  }
-  // function retrieve(){
-  //    var storageRef = firebase.storage.ref("testv5/")
-  // }
-)
-})
-    </script> -->
+        var file = document.getElementById('loadFile').files[0];
+        console.log('/images/' + file.name);
+        var storageRef = storage.ref('/trial1/' + file.name);
+
+        storageRef.put(file).then(function (snapshot) {
+            console.log('Uploaded a blob or file!');
+        });
+//    storageRef = storage.ref('');
+        storageRef.getDownloadURL().then(function (url) {
+
+        var xhr = new XMLHttpRequest();
+  
+
+  
+
+xhr.onreadystatechange = function(event) {
+    //typical action to be performed when the document is ready:
+       if (this.readyState == 4 && this.status == 200) {
+       // Typical action to be performed when the document is ready:
+       document.getElementById("url").value = url;
+    }
+};
+
+        xhr.open('POST', url, true);
+ 
+        xhr.send();
+      
+
+        //console.log(urlpass);
+    }).catch(function (error) {
+        // Handle any errors
+    });
+    }
+
+
+
+
+ </script>
+   
+        </div>  
 <br><br><br><br><br>
 <footer class="footer-outer">
       <div class="footer-inner">
@@ -242,5 +329,6 @@ submitButton.addEventListener('change', (e)=>{
 
     </footer>
 <!--         <script type="text/javascript" src="script.js"></script>
- -->    </body>
+
+
 
