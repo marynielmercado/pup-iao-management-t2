@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="styles.css"/>
+        <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+        <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    </head>
+    <title>
+        Internal Audit Management System
+    </title>
+    <body>
+        <div class="header-container">
+            <div id="header">
+                <img id="pup_logo" src="images/pup_logo.png" alt="PUP LOGO"/>
+                <br/>
+                <h1>
+                    <a id="logo" href="#">
+                        POLYTECHNIC UNIVERSITY OF THE PHILIPPINES
+                    </a>
+                </h1>
+                <p id="slogan">The Country's 1st PolytechnicU</p>
+            </div>
+        </div>
+        <div class="content-container">
+            <div class="row" id="content">
+                <div class="col-sm-4" id="send">
+                    <!--SEND REQUEST-->
+                    <h3>
+                        Send Request    
+                    </h3>
+                    <p>
+                        Requesting a document needs something to be requested!
+                    </p>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#sendRequest-modal">Send Request</button>
+                    <div class="modal fade" id="sendRequest-modal" role="dialog">
+                        <div class="modal-dialog">
+                            <!--sendRequest-modal Content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Send Request</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="requestForm" runat="server" method="post" action="/send_request">
+                                        <div class="form-group">
+                                            <label for="trackingNumber">Tracking Number</label><br/>
+                                            <input type="number" id="trackingNumber" name="tracking_number" class="form-control" required>
+                                            <h3 id="detail1">Requestor's Details</h3>
+                                            <label for="name">Name</label>
+                                            <input type="text" id="name" name="requestor_name" class="form-control" required>
+                                            <label for="email">Email</label>
+                                            <input type="email" id="email" name="email" class="form-control" required>
+                                            <label for="phone">Phone</label>
+                                            <input type="number" id="phone" name="phone" class="form-control" required>
+                                            <label for="designation">Designation</label>
+                                            <select id="designation" name="designation" class="form-control" required>
+                                            {{#each designation}}
+                                            <option value={{this.id}}> {{this.designation}} </option>
+                                            {{/each}}
+                                            </select>
+                                            <label for="branch/campus">Branch/Campus</label>
+                                            <select class="form-control" name="campus" > 
+                                            {{#each branch}} 
+                                            <option value ={{this.id}}> {{this.campus}} </option>
+                                            {{/each}}
+                                            </select>  <br> 
+                                            <label> Sector  </label><br>
+                                            <select class="form-control" name="sector" > 
+                                            {{#each sector}}   
+                                            <option value={{this.id}}> {{this.sector}}  </option>
+                                            {{/each}}
+                                            </select> <br>
+                                            <h3 id="detail2">Request Details</h3>
+                                            <label for="event_name">Event Name</label>
+                                            <input type="text" id="event_name" name="event_name" class="form-control" required>
+                                            <label for="start_date">Event Start Date</label>
+                                            <input type="date" id="start_date" name="start_date" class="form-control" required>
+                                            <label for="end_date">Event End Date</label>
+                                            <input type="date" id="end_date" name="end_date" class="form-control" required>
+                                            <label for="notes">Note to the Admin</label>
+                                            <textarea type="text" id="notes" name="notes" class="form-control"></textarea>
+                                            <p id="reminder">* Note: Files should be compressed and in zip file. File name should be your tracking number. *</p>
+                                            <input type="file" accept=".zip" id="upload_file">
+                                            <button type="button" class="btn btn-primary" value="upload">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4" id="update">
+                    <!--UPDATE REQUEST-->
+                    <h3>
+                        Update Request
+                    </h3>
+                    <p>
+                        You can update your request! just put in here everything that I need
+                    </p>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#updateRequest-modal">Update Request</button>
+                    <div class="modal fade" id="updateRequest-modal" role="dialog">
+                        <div class="modal-dialog">
+                            <!--updateRequest-modal Content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Update Request</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="updateForm" runat="server" method="post" action="/update_request" >
+                                        <div class="form-group">
+                                            <label for="trackingNumber">Tracking Number</label><br/>
+                                            <input type="number" id="trackingNumber" name="tracking_number" class="form-control" required>
+                                            <h3 id="detail2">Request Details</h3>
+                                            <label for="event_name">Event Name</label>
+                                            <input type="text" id="event_name" name="event_name" class="form-control" required>
+                                            <label for="start_date">Event Start Date</label>
+                                            <input type="date" id="start_date" name="start_date" class="form-control" required>
+                                            <label for="end_date">Event End Date</label>
+                                            <input type="date" id="end_date" name="end_date" class="form-control" required>
+                                            <label for="notes">Note to the Admin</label>
+                                            <textarea type="text" id="notes" name="notes" class="form-control"></textarea>
+                                            <p id="reminder">* Note: Files should be compressed and in zip file. File name should be your tracking number. *</p>
+                                            <input type="file" accept=".zip" id="upload_file">
+                                            <button type="submit" class="btn btn-primary" value="upload">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4" id="inquiry">
+                    <!--INQUIRY-->
+                    <h3>
+                        Inquiry
+                    </h3>
+                    <p>
+                        Have questions? Feel free to ask us anytime just hit the inquire button for more info! Thanks.
+                    </p>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#inquiry-modal">Inquiry</button>
+                    <div class="modal fade" id="inquiry-modal" role="dialog">
+                        <div class="modal-dialog">
+                            <!--inquiry-modal Content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Inquiry</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="inquiryForm" runat="server" method="post" action="/inquiry">
+                                        <div class="form-group">
+                                            <label for="email">Email</label>
+                                            <input type="email" id="email" name="email" class="form-control" required>
+                                            <label for="name">Name</label>
+                                            <input type="text" id="name" name="name" class="form-control" required>
+                                            <label for="branch/campus">Branch/Campus</label>
+                                            <select class="form-control" name="campus" > 
+                                            {{#each branch}} 
+                                            <option value ={{this.id}}> {{this.campus}} </option>
+                                            {{/each}}
+                                            </select>  <br> 
+                                            <label> Sector  </label><br>
+                                            <select class="form-control" name="sector" > 
+                                            {{#each sector}}   
+                                            <option value={{this.id}}> {{this.sector}}  </option>
+                                            {{/each}}
+                                            </select> <br>
+                                            <label for="notes">Note to the Admin</label>
+                                            <textarea type="text" id="notes" name="notes" class="form-control" placeholder="Inquiry/Questions"></textarea>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div class="container">
+                <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+                    <div class="row" style="padding: 10px;">
+                        <p id="footer">
+                            © 2018 Polytechnic University of the Philippines
+                        </p>
+                    </div>
+                </nav>
+            </div>
+        </footer>
+    </body> 
+</html>
+
+<style type="text/css">
+    img#pup_logo{
+    height: 90px;
+    width: 90px; 
+    float: left;  
+    margin-top: 10px;
+
+}
+
+.header-container{
+    padding-top: 0px;
+    padding-left: 10px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid black;
+    height: 105px;
+}
+
+a{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
+    margin-left: 20px;
+    color: maroon;
+}
+
+h1{
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+p#slogan{
+    padding-left: 110px;
+    margin: 0%;
+    color: maroon;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#send, #update{
+    padding-bottom: 10px;
+    height: 200px;
+    padding: 30px;
+    border-right: 1px solid black;
+}
+
+#inquiry{
+    padding-bottom: 10px;
+    height: 200px;
+    padding: 30px;
+}
+
+div#content{
+    width: 100%;
+    margin: 0%;
+    margin-top: 50px;
+}
+
+label{
+    margin-top: 10px;
+}
+
+#detail1, #detail2{
+    margin-top: 30px;
+    border-top: 1px solid black;
+    padding-top: 10px;
+}
+
+
+#reminder{
+    margin-top: 10px;
+}
+
+button.btn.btn-primary{
+    margin-top: 10px;
+    margin-left: 45%;
+}
+
+.container{
+    text-align: center;
+}
+
+@media only screen and (max-width: 600px){
+
+    img#pup_logo{
+        width: 50px;
+        height: 50px;
+    }
+
+    a#logo{
+        font-size: 15px;
+        margin-left: 0%;
+    }
+}
+</style>

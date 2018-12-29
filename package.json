@@ -1,25 +1,28 @@
 {
   "name": "package",
   "version": "1.0.0",
-  "description": "INTERNAL AUDIT OFFICE",
+  "description": "INTERNAL AUDIT OFFICE FRA SYSTEM",
   "main": "app.js",
   "dependencies": {
     "autoprefixer": "^9.0.0",
     "body-parser": "^1.18.3",
-    "bootstrap": "^3.3.7",
+    "bootstrap": "^3.4.0",
     "css-loader": "^1.0.0",
     "ejs": "^2.6.1",
-    "eslint-config-standard": "^11.0.0",
     "eslint": "^5.8.0",
+    "eslint-config-standard": "^11.0.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-node": "^7.0.1",
-    "eslint-plugin-standard": "^3.1.0",
     "eslint-plugin-promise": "^4.0.0",
-    "express-handlebars": "^3.0.0",
+    "eslint-plugin-standard": "^3.1.0",
     "exports-loader": "^0.7.0",
     "express": "^4.16.4",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.6",
     "firebase": "^5.5.6",
     "firebase-admin": "^6.0.0",
+    "flash": "^1.1.0",
+    "flish": "^0.1.0",
     "husky": "^0.14.3",
     "jquery": "^3.3.1",
     "lint-staged": "^7.2.2",
@@ -31,6 +34,7 @@
     "nodemailer-direct-transport": "^3.3.2",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
+    "permission": "^1.1.0",
     "pg": "^7.4.3",
     "pgloader": "^1.1.6",
     "popper.js": "^1.14.3",
@@ -41,13 +45,13 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
- "start": "node app.js"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/marynielmercado/pup-iao-management-t2.git"
   },
-  "author": "MARYNIEL MERCADO",
+  "author": "ENGR. FERDINAND O. NATIVIDAD",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/marynielmercado/pup-iao-management-t2/issues"

@@ -10,7 +10,7 @@
     "express-handlebars": "^3.0.0",
     "multer": "^1.2.0"
   },
-  "author": "Maryniel Mercado",
+  "author": "ENGR. FERDINAND O. NATIVIDAD",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

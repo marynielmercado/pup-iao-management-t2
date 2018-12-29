@@ -1,0 +1,146 @@
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+<link rel="icon" href="cpe.png">
+<title>TMS-Thesis Management System</title>
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color:black;">
+  <a class="navbar-brand" href="#" style="color:EB6415;"> <h1> {{title}} </h1> </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+    <div style="text-align:right">
+      <a style="color:white;" class="btn btn-default" href="/home">Home</a> 
+      <a style="color:#F76400;" class="btn btn-default" href="/home"> Login</a>
+      <a style="color:white;" class="btn btn-default" href="/signup"> Sign Up </a>
+    </div>
+</nav>
+
+<br><br><br>
+
+<style>
+.login_button {
+  padding: 10px 5px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: white;
+  background-color:white;
+  border: none;
+  border-radius: 15px;
+}
+
+.login_button:hover {
+  text-decoration: underline;
+
+}
+</style>
+
+<div class="main-body">
+  
+  
+    <div id= "box" class = "login-inner" style="width:100%;" align = "center">
+
+    <fieldset style="margin-left: 450px; padding:50px; font-family:arial; border-radius: 30px; color:white; float: left; background-color: #EB6415;vertical-align: center; height: 600px;"  >
+    <center>
+      <img class="d-block w-60" src="cpe.png"> </center>
+    
+    <h1 style="color:white"><strong> <center>Log In</center></strong></h1><br>
+    
+    <form method="post" action="/login">
+    
+    <img style="height:40px;width:40px;" src="usericon.png"> <input required style="background:white; border-radius: 3px; font-size: 20px;"   type ="email" name ="email" placeholder = "email address"  size="35" maxlength="32">
+    <br><br>
+    <img style="height:40px;width:40px;" src="passicon.png"> <input required style="background:white; border-radius: 3px; font-size: 20px;;"type ="password" name ="password" placeholder = "password" size="35" maxlength="32">
+    <br><br>
+    <br>
+    <!--<a class="btn btn-default" href="login_check.php"> -->
+    <button type="submit" name="login_user" style="height:30px;width:80px;">Login</button> 
+  
+    <br> <br>
+    <p style="font-family:arial;"> Don't have account yet? Sign up  <a href="/signup" style="font-family:arial; color:#85C1E9;"> here! </a>
+
+    <br>
+    </fieldset>
+    </form>
+    </div>
+    </div>
+  </div>
+<br><br><br><br><br><br>
+<style>
+body{
+background-color:#white;
+}
+</style>
+
+
+<br><br><br>
+
+<style>
+.footer-outer{
+  width: 100% height:100%;
+  background-color: black;
+}
+
+.footer-inner{
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 0px;
+  margin-bottom: 0%;
+  padding: 10px;
+  text-align: left;
+}
+
+.footer-inner .mediaicons img{
+  border:3px solid transparent;
+ }
+ 
+ .footer-inner .mediaicons img:hover{
+  border:3px solid #EB6415;
+  border-radius: 100px;
+ }
+
+ .footer-inner table tr{
+  padding:30px;
+ }
+.footer-inner table tr #footerdetails a:hover{
+  text-decoration: underline;
+  color: gold;
+}
+.footer-inner table tr #footerdetails a:last-child{
+  text-decoration: none;
+}
+</style>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<footer class="footer-outer">
+      <div class="footer-inner">
+        <table align="center">
+        <tr><td id="footerdetails">
+        <a style="color:white;" >ABOUT US </a>
+        <br>
+        <a style="color:white;" >CONTACT US</a>
+        <br>
+        <a style="color:white;" >COMMENTS AND SUGGESTIONS</a>
+        <br><br>
+        <a style="color:F76400;" >©Copyright 2018: Englatera_Kart_Mercado_Maryniel</a>
+        </td> 
+        <td style="text-align: right;">
+        <a class="mediaicons" href="http://www.facebook.com" target="_blank"> <img style="height:100px;width:100px;" src="fb.png"></a>
+        <a class="mediaicons" href="http://www.instagram.com" target="_blank"><img style="height:100px;width:100px;" src="ig.png"></a>
+        <a class="mediaicons" href="http://www.twitter.com" target="_blank"><img style="height:100px;width:100px;" src="twitter.png"></a>
+        </td></tr>
+        </table>
+      </div>
+
+    </footer>
+
+
+

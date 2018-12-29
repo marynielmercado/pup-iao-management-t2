@@ -1,0 +1,90 @@
+img#pup_logo{
+    height: 90px;
+    width: 90px; 
+    float: left;  
+    margin-top: 10px;
+
+}
+
+.header-container{
+    padding-top: 0px;
+    padding-left: 10px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid black;
+    height: 105px;
+}
+
+a{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
+    margin-left: 20px;
+    color: maroon;
+}
+
+h1{
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+p#slogan{
+    padding-left: 110px;
+    margin: 0%;
+    color: maroon;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#send, #update{
+    padding-bottom: 10px;
+    height: 200px;
+    padding: 30px;
+    border-right: 1px solid black;
+}
+
+#inquiry{
+    padding-bottom: 10px;
+    height: 200px;
+    padding: 30px;
+}
+
+div#content{
+    width: 100%;
+    margin: 0%;
+    margin-top: 50px;
+}
+
+label{
+    margin-top: 10px;
+}
+
+#detail1, #detail2{
+    margin-top: 30px;
+    border-top: 1px solid black;
+    padding-top: 10px;
+}
+
+
+#reminder{
+    margin-top: 10px;
+}
+
+button.btn.btn-primary{
+    margin-top: 10px;
+    margin-left: 45%;
+}
+
+.container{
+    text-align: center;
+}
+
+@media only screen and (max-width: 600px){
+
+    img#pup_logo{
+        width: 50px;
+        height: 50px;
+    }
+
+    a#logo{
+        font-size: 15px;
+        margin-left: 0%;
+    }
+}
