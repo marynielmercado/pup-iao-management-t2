@@ -1,3 +1,5 @@
+  
+<script type="text/javascript" >
 
   // Initialize Firebase
   var config = {
@@ -12,7 +14,7 @@
 
 
 const storage = firebase.storage()
-const submitButton = document.getElementById('fileupload');
+const submitButton = document.getElementById('loadFile');
 submitButton.addEventListener('change', (e)=>{
   let file = e.target.files[0];
   let locationRef = storage.ref('testv7/' + file.name)
@@ -28,9 +30,29 @@ submitButton.addEventListener('change', (e)=>{
          ref.push({
           url: metadata.downloadURLs[0]
           document.getElementById('url').value = url;
-       //   console.log('COMPLETED');
+         console.log('COMPLETED');
         })
+       document.getElementById('url').value = url;
+
         })
   }
 )
 })
+</script>
+
+
+
+
+                                    <form id="requestForm" method="post" action="/da">
+
+               <p id="reminder">* Note: Files should be compressed and in zip file. File name should be your tracking number. *</p> <br>
+
+                                             <br>
+                                            <input type="file" multiple="" accept=".zip" id="loadFile" name="loadFile">
+
+                                             <input  type="text" id="url" name="url" required> 
+
+  <button type="submit" class="btn btn-primary" id="submitbutton" value="upload">Submit</button>
+                                            </form>
+
+

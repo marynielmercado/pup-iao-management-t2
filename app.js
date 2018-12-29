@@ -185,7 +185,7 @@ var receivers = ['team2.dbms1819@gmail.com', req.body.email];
     from: 'team2.dbms1819@gmail.com', // list of receivers
     to: receivers,
     subject: 'REQUEST DETAILS', // Subject line
-    text: 'Request Details: \n Name:' + req.body.requestor_name + '\n Email:' + req.body.email + '\n Tracking Number:' + req.body.tracking_number + '\n Event Name:' + req.body.event_name + '\n Event Start Date:' + req.body.event_start_date + '\n Event End Date:' + req.body.event_end_date + '\n Status: Incomplete' 
+    text: 'Request Details: \n Name:' + req.body.requestor_name + '\n Email:' + req.body.email + '\n Tracking Number:' + req.body.tracking_number + '\n Event Name:' + req.body.event_name + '\n Event Start Date:' + req.body.start_date + '\n Event End Date:' + req.body.end_date + '\n Status: Incomplete' 
 
   };
 
@@ -204,7 +204,7 @@ var receivers = ['team2.dbms1819@gmail.com', req.body.email];
 
   client.query('INSERT INTO requests1 (tracking_number,requestor,email, phone, designation, branch, sector, event_name, event_start, event_end, notes, url, status) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13) ',values,(err,res)=>{
     if (err){
-      console.log(err.stack)
+      console.log(err.stack);
     }
     else{
       console.log('successfully added');
@@ -375,7 +375,12 @@ app.post('/inquiry', function (req, res) {
   res.redirect('/');
   });
 
+app.get('/multiple', function (req, res) {
+  res.render('multiple',{
 
+  });
+  // body...
+});
 
 app.listen(process.env.PORT || 3000, function () {
   console.log('Server started at port 3000');

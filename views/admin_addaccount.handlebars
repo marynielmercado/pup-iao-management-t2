@@ -1,0 +1,254 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+
+<link rel="icon" href="tnu.jpg">
+<title>TNU-The New Used</title>
+<style>
+body{
+background-color:white;
+}
+
+
+.main-body{
+  padding-top: 95px;
+  padding-bottom:0px;
+
+}
+.main-body table td{
+ padding-top:20px;
+ padding-bottom: 20px;
+ padding-right: 70px;
+ padding-left: 20px;
+
+}
+
+.main-body .selection table tr td img:hover{
+  border:5px solid gold;
+  border-radius: 10px;
+}
+
+.main-body .selection1 table tr td img:hover{
+  border:5px solid black;
+  border-radius: 10px;
+}
+
+a{
+  color: white;
+  text-decoration: none;
+}
+
+.men:hover{
+  border:5px solid black;
+  border-radius: 10px;
+}
+
+
+.men, .women{
+  border-radius: 25px;
+  border-style: solid;
+  padding: 10px 10px 10px 10px;
+  font-weight: bold;
+  
+}
+
+.men-default, .women-default {
+  border-color: gold;
+  background-color: white;
+  color: black;
+  font-size: 60px;
+  margin: 90px;
+  
+}
+.men-default:focus, .women-default:focus{
+  background-color: white;
+  color:white;
+  
+}
+.men-default:hover, .women-default:hover, .btn:hover{
+  text-decoration: underline;
+}
+
+.center {
+    margin: auto;
+    width: 50%;
+    border: 3px solid black;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: gold;
+    color: black;
+
+}
+
+main-body .button1{
+  border-radius: 10px;
+  border-style: solid;
+  padding: 80px 160px 80px 160px;
+  font-weight: bold;
+  
+}
+
+</style>
+
+
+
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
+  <button class="w3-bar-item w3-button w3-large"
+  onclick="w3_close()"><b>CLOSE</b>&times;</button>
+ <a class="w3-bar-item w3-button" href="/add_account">ADD ACCOUNT</a>
+<a class="w3-bar-item w3-button" href="/admin_changepass">CHANGE PASSWORD </a>
+<a class="w3-bar-item w3-button" href="/admin_changepass">VIEW REQUESTS </a>
+
+
+</div>
+
+<div id="main">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <button id="openNav" class="w3-button w3-gray w3-xlarge" onclick="w3_open()">&#9776;</button>
+   <a class="navbar-brand" href="#"> <h1> {{title}} </h1> </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+      <a style="color:white;" class="btn btn-default" href="/home">Home</a> 
+      <a style="color:white;" class="btn btn-default" href="/dashboard">Dashboard</a>
+                <a style="color:white;" class="btn btn-default" align="right" href="/">Log Out</a>
+
+</nav>
+</div>
+
+
+<script>
+function w3_open() {
+  document.getElementById("main").style.marginLeft = "25%";
+  document.getElementById("mySidebar").style.width = "25%";
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("openNav").style.display = 'none';
+}
+function w3_close() {
+  document.getElementById("main").style.marginLeft = "0%";
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("openNav").style.display = "inline-block";
+}
+</script>
+
+
+<style>
+body{
+background-color:white;
+}
+</style>
+<br><br><br>
+
+
+<!--- Creating Product Page --->
+
+
+      
+<div class="container center_div">
+<form method="POST" action="/add_faculty">
+ <div class="row" >
+  <div class="col-4">
+  <h2> ADD FACULTY </h2>
+  <br>
+    <label> FACULTY NAME </label><br>
+    <input type="text" class="form-control" name="facultyname" placeholder="ENGR. JUAN DELA CRUZ" required> <br>
+    <label> EMAIL </label><br>
+    <input type="email"  class="form-control" name="email" placeholder="juandelacruz@gmail.com" required> </input> <br>
+    <label> CONTACT NUMBER </label><br>
+    <input type="number" class="form-control" name="contactnumber" placeholder="0916XXXXXXX" required> <br>
+  <label> PASSWORD </label><br>
+    <input type="number" class="form-control" name="password" placeholder="XXXXXXX" required> <br>
+   <label> REPEAT PASSWORD </label><br>
+    <input type="number" class="form-control" name="password2" placeholder="XXXXXXX" required> <br>
+       <label> ADMIN? </label><br>
+  <select class="form-control" name="admin">
+    <option value="NO" selected>NO</option>
+    <option value="YES"> YES</option>
+    </select>
+<br><br><br>
+    <button type="submit" class="btn btn-primary"> SUBMIT</button>
+     <br><br><br><br><br><br>
+
+   </div>
+   </div>
+  
+</form>
+       
+</div>
+</div>
+
+<br><br><br>
+
+
+
+<br><br><br><br>
+<br>
+<style>
+.footer-outer{
+  width: 100% height:100%;
+  background-color: #343A40;
+}
+
+.footer-inner{
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 0px;
+  margin-bottom: 0%;
+  padding: 10px;
+  text-align: left;
+}
+
+.footer-inner .mediaicons img{
+  border:3px solid transparent;
+ }
+ 
+ .footer-inner .mediaicons img:hover{
+  border:3px solid gold;
+  border-radius: 100px;
+ }
+
+ .footer-inner table tr{
+  padding:30px;
+ }
+.footer-inner table tr #footerdetails a:hover{
+  text-decoration: underline;
+  color: gold;
+}
+.footer-inner table tr #footerdetails a:last-child{
+  text-decoration: none;
+}
+</style>
+<footer class="footer-outer">
+      <div class="footer-inner">
+        <table align="center">
+        <tr><td id="footerdetails">
+        <a style="color:white;" >ABOUT US </a>
+        <br>
+        <a style="color:white;" >CONTACT US</a>
+        <br>
+        <a style="color:white;" >COMMENTS AND SUGGESTIONS</a>
+        <br><br>
+        <a style="color:white;" >©Copyright 2018: Englatera_Kart_Mercado_Maryniel</a>
+        </td> 
+        <td style="text-align: right;">
+        <a class="mediaicons" href="http://www.facebook.com" target="_blank"> <img style="height:100px;width:100px;" src="fb.png"></a>
+        <a class="mediaicons" href="http://www.gmail.com" target="_blank"><img style="height:100px;width:100px;" src="mail.png"></a>
+        <a class="mediaicons" href="http://www.twitter.com" target="_blank"><img style="height:100px;width:100px;" src="twitter.png"></a>
+        </td></tr>
+        </table>
+      </div>
+
+    </footer>
+
