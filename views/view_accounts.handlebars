@@ -118,10 +118,14 @@ table {
 
 </style>
 
-
     <head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<!--         <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="super_admin.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+        <script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script> -->
         <link rel="stylesheet" href= "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
      <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 
@@ -130,19 +134,18 @@ table {
         <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="super_admin.css"/> -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
-<!--         <script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script> -->
+
     </head>
     <title>
         Administrator
     </title>
-    <body>
+    <body>  
         <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">Internal Audit Office</a>
                 </div>
-                <div class="navbar-header pull-right">
+                 <div class="navbar-header pull-right">
                     <a href="/logout">
                         <i class="fa fa-sign-out fa-2x" id="sign-out"></i>
                     </a>
@@ -156,37 +159,43 @@ table {
                         <h3>Hi Admin!</h3>
                     </div>
                     <ul class="unstyled-list components">
-                        <li class="active"><a href="#"><i class="fa fa-user-plus fa-2x"> Create Account</i></a></li>
-                        <li><a href="/viewaccounts"><i class="fa fa-users fa-2x"> View Accounts</i></a></li>
+                        <li class="active"><a href="/addaccount"><i class="fa fa-user-plus fa-2x"> Create Account</i></a></li>
+                        <li><a href="#"><i class="fa fa-users fa-2x"> View Accounts</i></a></li>
                     </ul>
                 </nav>
             </div>
             <div class="col-sm-9">
                 <div class="container-fluid" id="content">
-                    <img src="user_accounts.png" alt="add_user" class="img-responsive">
-                    <h2>Create Account</h2>
-                    <form method="post" action="/create_account">
-                        <div class="form-group">
-                            <div class="row" id="form_handler">
-                                <label for="fname">First Name</label>
-                                <input type="text" id="fname" class="form-control" name="fname" required>  
-                                <label for="lname">Last Name</label>
-                                <input type="text" id="lname" class="form-control" name="lname" required>
-                                <label for="email">Email</label>
-                                <input type="text" id="email" class="form-control" name="email" required>
-                                <label for="password">Password</label>
-                                <input type="password" id="password" class="form-control" name="password" required><!-- 
-                                <label for="confirm">Re-enter Password</label>
-                                <input type="password" id="confirm" class="form-control" name="confirm" required> -->
-                                <label for="role">Role </label>
-                                <select class="form-control" name = "role"  id = "role"> 
-                                <option class="form-control"> User </option>
-                                <option class="form-control"> Role </option>
-                                </select>
-                            </div>
-                        <button type="submit" class="btn btn-success">Create</button> 
-                        </div>
-                    </form>
+                    <img id="view-account" src="user_accounts.png" alt="add_user" class="img-responsive">
+                    <h2>Admin Accounts</h2>
+                    <div id="accounts">
+                        <script type="text/x-handlebars-template" id="tableTemplate">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            First name
+                                        </th>
+                                        <th>
+                                            Last Name
+                                        </th>
+                                        <th>
+                                            Email
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each array}}
+                                        <tr>
+                                            {{#each this}}
+                                                <td>{{this}}</td>
+                                            {{/each}}
+                                        </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                        </script>   
+                    </div>
                 </div>
             </div>
         </div>
@@ -202,3 +211,20 @@ table {
             </nav>
         </div>
     </footer>
+    <script type="text/javascript">
+        $(function () {
+            var tableTemplate = $('#tableTemplate').html();
+            var tableTamplate = Handlebars.compile(templateText);
+
+            var accounts = [
+                {'First Name':'Chris John', 
+                 'Last Name':'Mulingbayan',
+                 'Email': 'chrisjohnmulingbayan@gmail.com'}
+                {'First Name': 'Lydel',
+                 'Last Name': 'Labrador',
+                 'Email': 'lydel27@gmail.com'}
+            ];
+            
+            $(#accounts).html(tableTemplate({  array: accounts}));
+        })
+    </script>

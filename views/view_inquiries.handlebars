@@ -1,0 +1,320 @@
+<style>
+.navbar.navbar-custom.navbar-fixed-top{
+    background: #8f3233;
+    width: 100%;
+}
+
+.navbar-brand{
+    color: white;
+}
+
+
+.row{
+    width: 100%;
+}
+.col-sm-3{
+    margin-top: 3%;
+    min-width: 250px;
+    max-width: 250px;
+    height: 600px;
+    border-right: 1px solid black;
+    
+}
+
+img{
+    height: 50px;
+    width: 50px;
+    float: left;
+}
+
+.col-sm-9{
+    margin-top: 3%;
+    padding-top: 30px;
+    height: 600px;
+}
+
+#view_request{
+    margin-top: 10px;
+}
+
+li{
+    list-style-type: none;
+    margin-top: 20px;
+    font-size: 10px;
+    float: left;
+}
+
+#fname, #lname, #email, 
+#password, #confirm{
+    width: 500px;
+    margin-bottom: 10px;
+}
+
+.btn.btn-success{
+    margin-top: 20px;
+    margin-left: 415px;
+}
+
+.form-group{
+    margin-left: 30px;
+}
+
+#content{
+    padding-left: 20px;
+}
+
+footer{
+    text-align: center; 
+}
+
+p{
+    padding-top: 20px;
+}
+
+.sidebar-header{
+    margin-left: 10px;
+}
+
+i{
+    color: black;
+    font-family: inherit;
+
+}
+
+i:hover{
+    color: blue;
+}
+
+h3{
+    margin-left: 15px;
+    font-family: serif;
+    font-weight: bold;
+}
+
+img#view-account{
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+}
+
+table {
+    width: 100%;
+}
+  
+table, th, td {
+    border: 1px solid lightgrey;
+    border-collapse: collapse;
+}
+  
+th, td {
+    padding: 2px 4px;
+    text-align: center;
+}
+
+.panel-warning>.panel-heading{
+    background-color: #f7e32e;
+}
+
+h2{
+    color: white;
+    margin-top: 10px;
+}
+
+#request-holder, #inquiry-holder{
+    margin-top: 3%;
+}
+
+.fa-comments, .fa-file{
+    color: #fff;
+}
+
+#search-bar{
+    width: 400px;
+    margin-left: 23%;
+}
+
+.fa-sign-out{
+    color: white;
+}
+
+.fa-2x{
+    margin-top: 10px;
+}
+
+#title{
+    color: black;
+}
+
+
+table {
+    width: 100%;
+}
+  
+table, th, td {
+    border: 1px solid lightgrey;
+    border-collapse: collapse;
+}
+  
+th, td {
+    padding: 2px 4px;
+}
+
+td,th{
+    height: 40px;
+}
+
+#filter-container{
+    width: 120px;
+    margin-left: 0px;
+    padding: 0px;
+}
+
+#filter{
+    padding: 0px;
+}
+
+.pagination-container{
+    text-align: center;
+}
+
+#column_2{
+    width: 200px;
+}
+
+#Tnumber{
+    width: 150px;
+
+}
+</style>
+
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href= "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+     <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    </head>
+    <title>
+        Admin
+    </title>
+    <body>
+        <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="admin.html">Internal Audit Office</a>
+                </div>
+                <div class="navbar-header pull-right" id="sign-out">
+                    <a href="../login_page.html">
+                            <i class="fa fa-sign-out fa-2x"></i>
+                    </a>
+                </div><!-- 
+                <form class="navbar-form add-on">
+                    <div class="input-group" id="search-bar">
+                        <input class="form-control" name="search" type="text" placeholder="Search"/>
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form> -->
+            </div>
+        </nav>
+        <div class="row">
+            <div class="col-sm-3">
+                <nav id="sidebar">
+                    <div class="sidebar-header">
+                        <h3>Hi Admin!</h3>
+                    </div>
+                    <ul class="unstyled-list components">
+                        <li class="active" id="view_requests"><a href="/view_requests"><i class="fa fa-file-o fa-2x"> View Requests</i></a></li>
+                        <li><a href="/view_inquiries"><i class="fa fa-envelope-o fa-2x"> View Inquiries</i></a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-sm-9">
+                <div class="container-fluid" id="content">
+                    <h2 id="title">
+                        List of Inquiries
+                    </h2>
+                    <div class="form-group" id="filter-container">
+                        <label> Filter Type </label>
+                            <select class="form-control" id="filter">
+                                <option selected>All</option>
+                            <option>By Branch</option>
+                            <option>By Sector</option>
+                        </select>
+                    </div>
+                    <div class="container-fluid" id="inquiry">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Name
+                                        </th>
+                                        <th>
+                                            Sector
+                                        </th>
+                                        <th>
+                                            Branch/Campus
+                                        </th>
+                                        <th>
+                                            Inquiry
+                                        </th>
+                                        <th> Status
+                                        </th>
+                                        <th>
+                                        </th>
+                                        <th>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        {{#each inquiry}}
+                                            <td><a class="inside">{{this.name}}</a></td>
+                                            <td><a class="inside">{{this.sector}}</a></td>
+                                            <td><a class="inside">{{this.branch}}</a></td>
+                                            <td><a class="inside">{{this.notes}}</a></td>
+                                            <td><a class="inside">{{this.status}}</a></td>
+                                            <td><a class="inside"> <textarea> </textarea> </a> </td>
+                                            <td>
+                                                <button onclick="location.href='/inquiry/{{this.id}}';" type="button" class="btn btn-default">
+                                                    <span  class="fa fa-external-link"> Send a reply </span>
+                                                </button>
+                                                
+                                            </td>
+                                    </tr>
+                                        {{/each}}
+
+                                </tbody>
+                            </table>
+                    </div>
+                    <div class="pagination-container">
+                        <ul class="pagination pagination-md">
+                            <li class="disabled"><a href="#">&laquo;</a></li>
+                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                              <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">&raquo;</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <footer>
+        <div class="container">
+            <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+                <div class="row" style="margin-top: 0px;">
+                    <p>
+                        © 2018 Polytechnic University of the Philippines
+                    </p>
+                </div>
+            </nav>
+        </div>
+    </footer>

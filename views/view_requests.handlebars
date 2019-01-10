@@ -1,0 +1,315 @@
+
+<!-- saved from url=(0053)https://getbootstrap.com/docs/4.1/examples/dashboard/ -->
+<!-- <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+         <script type="text/javascript" src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+
+   <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+ -->
+
+<style> 
+
+.navbar.navbar-custom.navbar-fixed-top{
+    background: #8f3233;
+    width: 100%;
+}
+
+.navbar-brand{
+    color: white;
+}
+
+
+.row{
+    width: 100%;
+}
+.col-sm-3{
+    margin-top: 3%;
+    min-width: 250px;
+    max-width: 250px;
+    height: 600px;
+    border-right: 1px solid black;
+    
+}
+
+img{
+    height: 50px;
+    width: 50px;
+    float: left;
+}
+
+.col-sm-9{
+    margin-top: 3%;
+    padding-top: 30px;
+    height: 600px;
+}
+
+li{
+    list-style-type: none;
+    margin-top: 20px;
+    font-size: 10px;
+    float: left;
+}
+
+#fname, #lname, #email, 
+#password, #confirm{
+    width: 500px;
+    margin-bottom: 10px;
+}
+
+.btn.btn-success{
+    margin-top: 20px;
+    margin-left: 415px;
+}
+
+.form-group{
+    margin-left: 30px;
+}
+
+#content{
+    padding-left: 20px;
+}
+
+footer{
+    text-align: center; 
+}
+
+p{
+    padding-top: 20px;
+}
+
+.sidebar-header{
+    margi       n-left: 10px;
+}
+
+i{
+    color: black;
+    font-family: inherit;
+
+}
+
+i:hover{
+    color: white;
+}
+
+h3{
+    margin-left: 10px;
+    font-family: serif;
+}
+
+img#view-account{
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+}
+
+table {
+    width: 100%;
+  }
+  
+  table, th, td {
+    border: 1px solid lightgrey;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 2px 4px;
+  }
+
+.fa-sign-out{
+    color: white;
+}
+
+#sign-out{
+    margin-top: 10px;   
+}
+
+
+.men, .women{
+  padding: 3px 50px 3px 1px;
+  font-weight: bold;
+  
+}
+
+.men-default, .women-default {
+  background-color: white;
+  color: black;
+  font-size: 14px;
+  margin: 15px;
+  
+}
+
+
+.center {
+    margin: auto;
+    width: 50%;
+    border: 3px solid black;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: gold;
+    color: black;
+
+}
+
+.inside{
+  color: black;
+   padding: 3px 50px 3px 20px;
+  font-size: 11px;
+  margin: 15px;
+  
+}
+</style>
+
+ <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href= "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+     <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- 
+        <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="super_admin.css"/> -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+<!--         <script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script> -->
+   
+</head>
+    <title>Admin</title>
+
+    <!-- Bootstrap core CSS --><!-- 
+    <link href="./Dashboard Template for Bootstrap_files/bootstrap.min.css" rel="stylesheet">
+
+    <link href="./Dashboard Template for Bootstrap_files/dashboard.css" rel="stylesheet">
+  <style type="text/css">/* Chart.js */
+@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style></head>
+ -->
+  <body>
+   <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Internal Audit Office</a>
+                </div>
+                 <div class="navbar-header pull-right">
+                    <a href="/logout">
+                        <i class="fa fa-sign-out fa-2x" id="sign-out"></i>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+    <div class="container-fluid">
+    <div class="row">
+            <div class="col-sm-3">
+                <nav id="sidebar">
+                    <div class="sidebar-header">
+                        <h3>Hi Admin!</h3>
+                    </div>
+                    <ul class="unstyled-list components">
+                        <li class="active"><a href="#"><i class="fa fa-user-plus fa-2x"> View Requests </i></a></li>
+                        <li><a href="/view_inquiries"><i class="fa fa-users fa-2x"> View Inquiries </i></a></li>
+                    </ul>
+                </nav>
+            </div> 
+            <div class="col-sm-9">
+                <div class="container-fluid" id="content">
+         <!--          
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">LIST OF REQUEST </h1>
+            <div class="btn-toolbar mb-2 mb-md-0">s
+              <div class="btn-group mr-2">
+              </div>
+            </div>
+          </div>
+ -->
+
+
+
+<!-- 
+<div class="container">
+    <div class="row clearfix">
+      <div class="col-md-12 table-responsive"> -->
+        <h2>List of Requests </h2>
+      <table class="table table-bordered table-hover table-sortable" id="tab_logic">
+        <thead>
+          <tr >
+            <th class="text-center">
+              Tracking Number 
+            </th>
+            <th class="text-center">
+              Event Name 
+            </th>
+            <th class="text-center">
+              Requestor
+            </th>
+            <th class="text-center">
+              Request Status
+            </th>
+            <th class="text-center">
+              
+            </th>
+                <th class="text-center" style="border-top: 1px solid #ffffff; border-right: 1px solid #ffffff;">
+            </th>
+          </tr>
+        </thead>
+<tbody>
+            <tr>
+                      {{#each requests1}}
+
+              <td> <a class="inside">{{this.tracking_number}}</a></td>
+   <td><a class="inside">{{this.event_name}}</a></td>
+        <td><a class="inside"> {{this.requestor}}</a></td>
+                <td><a class="inside">{{this.status}}</a></td>
+                <td> <button onclick="location.href='/requests/{{this.id}}';" type="button" class="btn btn-default"><span class="glyphicon glyphicon-export"></span> View </button>
+
+                 </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+</div>
+</div>
+    </div>
+ 
+
+
+
+
+<!--  -->
+
+         
+        </main>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./Dashboard Template for Bootstrap_files/jquery-3.3.1.slim.min.js.download" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script><!-- 
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script> -->
+    <script src="./Dashboard Template for Bootstrap_files/popper.min.js.download"></script>
+    <script src="./Dashboard Template for Bootstrap_files/bootstrap.min.js.download"></script>
+<script type="text/javascript">
+  
+
+
+
+</script>
+    <!-- Icons -->
+  <!--   <script src="./pup-logo.png"></script>
+    <script>
+      feather.replace()
+    </script> -->
+</body>

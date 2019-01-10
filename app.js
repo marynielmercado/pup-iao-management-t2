@@ -102,28 +102,6 @@ passport.deserializeUser(function(id, cb) {
   });
 });
 
-// function isAdmin(req, res, next) {
-//   if (req.isAuthenticated()) {
-//    Admin.getAdminData(client, {id: req.user.id}, function(user){
-//     console.log(req.user);
-//     role = user[0].user_type;
-//     // req.session.user = user.user_type;
-//     // console.log(req.session.user)
-//     console.log('role:', role);
-//     if (role == 'admin') {
-//         return next();
-//     }
-//     else{
-//       res.redirect('/');
-//     }
-//   });
-//   }
-//   else{
-//     console.log('error', req.user);
-//     res.redirect('/login');
-//   }
-// }
-
 
 
 app.get('/adminlogin', function (req, res) {
@@ -143,11 +121,11 @@ app.post('/login',
   function(req, res) {
         if(req.user.role == 'admin')
         {
-          res.redirect('/adminpass');
+          res.redirect('/addaccount');
         }
         else
         {
-          res.redirect('/');
+          res.redirect('/view_requests');
         }
         
   });
@@ -156,8 +134,54 @@ app.post('/login',
 
 app.get('/logout', function(req, res){
   req.logout();
-  res.redirect('/');
+  res.redirect('/adminlogin');
 });
+
+//add acount admin
+app.get('/addaccount', function (req, res) {
+  if(req.isAuthenticated()){
+  res.render('admin_addaccount',{
+
+  });}
+  else
+  {
+    res.redirect('/adminlogin');
+  }
+});
+
+//add account
+
+app.post('/create_account', function (req, res) {
+ var values = [];
+  values = [req.body.fname, req.body.lname, req.body.email, req.body.password,req.body.role];
+  console.log(req.body);
+  console.log(values);
+
+  client.query('INSERT INTO admin (firstname, lastname, email, password, role) VALUES ($1,$2,$3,$4,$5) ',values,(err,res)=>{
+    if (err){
+      console.log(err.stack)
+    }
+    else{
+      console.log('successfully added');
+
+    }
+  });
+  res.redirect('/viewaccounts');
+  });
+
+
+//view accounts
+app.get('/viewaccounts', function (req, res) {
+  if(req.isAuthenticated()){
+  res.render('view_accounts',{
+
+  });}
+  else
+  {
+    res.redirect('/adminlogin');
+  }
+});
+
 
 
 //upload request
@@ -225,15 +249,60 @@ var receivers = ['team2.dbms1819@gmail.com', req.body.email];
 //     res.redirect('/users/' + req.user.username);
 //   });
 
+//inquiry
+app.get('/view_inquiries', function (req, res) {
+ if(req.isAuthenticated()){
+  client.query('SELECT * FROM inquiry ORDER BY id DESC', (req, data) => {
+   var list = [];
+    for (var i = 1; i < data.rows.length + 1; i++) {
+      list.push(data.rows[i - 1]);
+    }
+    res.render('view_inquiries', {
+      inquiry: list
+    });
+  });
+  }
+  else
+  {
+    res.redirect('/adminlogin');
+  }
+});
+//inquiry
+var id3; 
 
-app.get('/adminpass', function (req, res) {
+app.get('/inquiry/:id2', function (req, res) {
+  const id2 = req.params.id2;
+  var list1 = [];
+  var list = [];
+  if(req.isAuthenticated()){
+    client.query('SELECT * FROM inquiry where id ='+ id2 + '', (req, data2) => {
+    for (var i = 0; i < data2.rowCount; i++) {
+      list1[i] = data2.rows[i];
+    } list = list1;
+    id3 = id2;
+    res.render('view_inquiries_message', {
+      title: 'INTERNAL AUDIT OFFICE',
+      inquiry: list[0]
+    });
+  });
+}
+else{
+    res.redirect('/adminlogin');
+  }
+});
+
+
+
+
+
+app.get('/view_requests', function (req, res) {
    if(req.isAuthenticated()){
   client.query('SELECT id, tracking_number,requestor,event_name,event_start,notes,request_date,status, url FROM requests1 ORDER BY id DESC', (req, data) => {
    var list = [];
     for (var i = 1; i < data.rows.length + 1; i++) {
       list.push(data.rows[i - 1]);
     }
-    res.render('admin', {
+    res.render('view_requests', {
       requests1: list
     });
   });
@@ -256,7 +325,7 @@ app.get('/requests/:idNew', function (req, res) {
       list1[i] = data2.rows[i];
     } list = list1;
     id1 = idNew;
-    res.render('admin-update', {
+    res.render('admin-update2', {
       title: 'INTERNAL AUDIT OFFICE',
       requests1: list[0]
     });
@@ -289,7 +358,7 @@ var receivers = ['team2.dbms1819@gmail.com', req.body.email];
     from: 'team2.dbms1819@gmail.com', // list of receivers
     to: receivers,
     subject: 'REQUEST STATUS CHANGED', // Subject line
-    text: 'Good day! \n We would like to inform you that the status of your request with the tracking Number of ' + req.body.tracking_number + ' has been changed. \n \n \n Internal Audit Office' 
+    text: 'Good day! \n We would like to inform you that the status of your request with the tracking Number of ' + req.body.tracking_number + ' has been changed. Please proceed to the Internal Audit Office. \n \n \n Internal Audit Office' 
 
   };
 
@@ -308,7 +377,74 @@ var receivers = ['team2.dbms1819@gmail.com', req.body.email];
       console.log('success!');
     }
   });
-    res.redirect('/admin');
+    res.redirect('/view_requests');
+});
+
+});
+
+app.get('/requests/:idNew', function (req, res) {
+  const idNew = req.params.idNew;
+  var list1 = [];
+  var list = [];
+  if(req.isAuthenticated()){
+    client.query('SELECT * FROM requests1 where id ='+ idNew + '', (req, data2) => {
+    for (var i = 0; i < data2.rowCount; i++) {
+      list1[i] = data2.rows[i];
+    } list = list1;
+    id1 = idNew;
+    res.render('admin-update2', {
+      title: 'INTERNAL AUDIT OFFICE',
+      requests1: list[0]
+    });
+  });
+}
+else{
+    res.redirect('/adminlogin');
+  }
+});
+
+//admin update status
+app.post('/send_findings', function (req, res) {
+
+var receivers = ['team2.dbms1819@gmail.com', req.body.email];
+
+  let mailOptions, transporter;
+  transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: {
+      user: 'team2.dbms1819@gmail.com',
+      pass: 'database1819'
+    }
+  });
+  console.log(req.body);
+
+  mailOptions = {
+    // from: req.body.FN+'  &lt; '+ req.body.LN +'   &lt;' + req.body.email +' &gt;', // sender address
+    from: 'team2.dbms1819@gmail.com', // list of receivers
+    to: receivers,
+    subject: 'FINDINGS', // Subject line
+    text: 'Good day! \n We would like to inform you that there are findings in your submitted documents with the tracking Number of ' + req.body.tracking_number + '. Please check the findings below. \n \n \n '+ req.body.findings + ' \n \n \n Internal Audit Office' 
+
+  };
+
+  console.log(mailOptions);
+
+  // send mail with defined transport object
+  transporter.sendMail(mailOptions, function (error, response) {
+    if (error) {
+      res.redirect('/fail');
+    }
+
+  client.query("UPDATE requests1 SET findings = "+ req.body.findings +" WHERE id = "+ id1 + "", (err, res) => {
+    if (err) {
+      console.log(err.stack);
+    } else {
+      console.log('success!');
+    }
+  });
+    res.redirect('/view_requests');
 });
 
 });
@@ -359,11 +495,11 @@ client.query("UPDATE requests1 SET event_name = '"+ req.body.event_name +"', eve
 //inquiry
 app.post('/inquiry', function (req, res) {
  var values = [];
-  values = [req.body.email, req.body.name, req.body.campus, req.body.sector,req.body.notes, 'NOW()'];
+  values = [req.body.email, req.body.name, req.body.campus, req.body.sector,req.body.notes, 'NOW()', "new inquiry" ];
   console.log(req.body);
   console.log(values);
 
-  client.query('INSERT INTO inquiry (email, name, branch, sector, notes, inquiry_date) VALUES ($1,$2,$3,$4,$5,$6) ',values,(err,res)=>{
+  client.query('INSERT INTO inquiry (email, name, branch, sector, notes, inquiry_date, status) VALUES ($1,$2,$3,$4,$5,$6,$7) ',values,(err,res)=>{
     if (err){
       console.log(err.stack)
     }
@@ -375,12 +511,7 @@ app.post('/inquiry', function (req, res) {
   res.redirect('/');
   });
 
-app.get('/multiple', function (req, res) {
-  res.render('multiple',{
 
-  });
-  // body...
-});
 
 app.listen(process.env.PORT || 3000, function () {
   console.log('Server started at port 3000');

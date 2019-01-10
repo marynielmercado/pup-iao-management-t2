@@ -40,6 +40,7 @@ a{
 }
 a#delete{
     font-family: 'Times New Roman', Times, serif;
+    float-left: 100px;
     font-size: 15px;
     color: blue;
 }
@@ -137,7 +138,7 @@ button.btn.btn-primary{
                     <p>
                         Requesting a document needs something to be requested!
                     </p>
-                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#sendRequest-modal">Send Request</button>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#sendRequest-modal">Send</button>
                     <div class="modal fade" id="sendRequest-modal" role="dialog">
                         <div class="modal-dialog">
                             <!--sendRequest-modal Content-->
@@ -187,9 +188,10 @@ button.btn.btn-primary{
                                             <textarea type="text" id="notes" name="notes" class="form-control"></textarea>
                                             <p id="reminder">* Note: Files should be compressed and in zip file. File name should be your tracking number. *</p>
                                              <input  class="form-control" type="hidden" id="url" name="url" required> <br>
-                                            <input type="file" accept=".zip" id="loadFile" name="loadFile"> <br> 
+                                            <input type="file" accept=".zip" id="loadFile" name="loadFile"> <a href=# id="delete" onclick="deletefile()"> Delete </a> <br> <br> 
+                                            
                                             <center> <p id="message"> </p> </center>
-                                            <a href=# id="delete" onclick="deletefile()"> Delete </a> <br>
+                                            
                                             <button type="submit" class="btn btn-primary" id="submitbutton" value="upload">Submit</button>
                                         </div>
                                     </form>
@@ -206,7 +208,7 @@ button.btn.btn-primary{
                     <p>
                         You can update your request! just put in here everything that I need
                     </p>
-                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#updateRequest-modal">Update Request</button>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#updateRequest-modal">Update</button>
                     <div class="modal fade" id="updateRequest-modal" role="dialog">
                         <div class="modal-dialog">
                             <!--updateRequest-modal Content-->
@@ -233,7 +235,7 @@ button.btn.btn-primary{
                                              <input  class="form-control" hidden type="text" id="url1" name="url1" required> <br>
                                             <input type="file" accept=".zip" id="update_loadFile" name = "update_loadFile">
                                             <br>  <center> <p id="message1"> </p> </center>
-                                            <a href=# id="delete" onclick="deletefile()"> Delete </a> <br>
+                                            <button href=# id="delete" class="btn btn-primary pull-right" onclick="deletefile()"> Delete </button> <br>
                                             <button type="submit" class="btn btn-primary" value="update_upload">Submit</button>
                                         </div>
                                     </form>
@@ -250,7 +252,7 @@ button.btn.btn-primary{
                     <p>
                         Have questions? Feel free to ask us anytime just hit the inquire button for more info! Thanks.
                     </p>
-                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#inquiry-modal">Inquiry</button>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#inquiry-modal">Inquire</button>
                     <div class="modal fade" id="inquiry-modal" role="dialog">
                         <div class="modal-dialog">
                             <!--inquiry-modal Content-->

@@ -1,0 +1,105 @@
+.navbar.navbar-custom.navbar-fixed-top{
+    background: #8f3233;
+    width: 100%;
+}
+
+.navbar-brand{
+    color: white;
+}
+
+
+.row{
+    width: 100%;
+}
+.col-sm-3{
+    margin-top: 3%;
+    min-width: 250px;
+    max-width: 250px;
+    height: 600px;
+    border-right: 1px solid black;
+    
+}
+
+img{
+    height: 50px;
+    width: 50px;
+    float: left;
+}
+
+.col-sm-9{
+    margin-top: 3%;
+    padding-top: 30px;
+    height: 600px;
+}
+
+li{
+    list-style-type: none;
+    margin-top: 20px;
+    font-size: 10px;
+    float: left;
+}
+
+#fname, #lname, #email, 
+#password, #confirm{
+    width: 500px;
+    margin-bottom: 10px;
+}
+
+.btn.btn-success{
+    margin-top: 20px;
+    margin-left: 415px;
+}
+
+.form-group{
+    margin-left: 30px;
+}
+
+#content{
+    padding-left: 20px;
+}
+
+footer{
+    text-align: center; 
+}
+
+p{
+    padding-top: 20px;
+}
+
+.sidebar-header{
+    margi       n-left: 10px;
+}
+
+i{
+    color: black;
+    font-family: inherit;
+
+}
+
+i:hover{
+    color: white;
+}
+
+h3{
+    margin-left: 10px;
+    font-family: serif;
+}
+
+img#view-account{
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+}
+
+table {
+    width: 100%;
+  }
+  
+  table, th, td {
+    border: 1px solid lightgrey;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 2px 4px;
+  }
