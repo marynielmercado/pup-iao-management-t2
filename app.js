@@ -149,6 +149,14 @@ app.get('/addaccount', function (req, res) {
   }
 });
 
+
+//add acount admin
+app.get('/fail', function (req, res) {
+  res.render('fail',{
+  });
+});
+
+
 //add account
 
 app.post('/create_account', function (req, res) {

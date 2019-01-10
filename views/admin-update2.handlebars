@@ -244,6 +244,8 @@ td,th{
                         Event Details
                     </h2>
                     <div class="container-fluid" id="event_detail">
+
+                                <form action="/send_findings" method="POST">
                         <table>
                             <tr>
                                 <th id="Tnumber">
@@ -307,7 +309,7 @@ td,th{
                                 </th>
                             </tr>
                               <td> <a class="inside">{{requests1.requestor}}</a></td>
-                              <td><a class="inside" name="email">{{requests1.email}}</a></td>
+                              <td name="email1"><a class="inside" name="email1" id="email1"> {{requests1.email}}</a></td>
                               <td><a class="inside">{{requests1.phone}}</a></td>
                               <td><a class="inside">{{requests1.notes}}</a></td>
 
@@ -316,8 +318,8 @@ td,th{
                     <div>
                         <h2> Findings/Remarks: </h2>
                         
-                                <form action="/send_findings" method="POST">
-                                  <textarea rows="4" cols="130" name="findings"> </textarea> 
+                                  <textarea rows="4" cols="130" name="findings" onclick="move()" > </textarea> 
+                                <input type = hidden class ="inside" id="email">
                                     <button class="btn btn-lg btn-primary pull-right" type="submit"> Send </button>
                                    </form>
                            
@@ -348,3 +350,11 @@ td,th{
             </nav>
         </div>
     </footer>
+    <script>
+function move(){
+     var email = document.getElementById('email');
+          email = document.getElementById('email1').value;
+
+}
+       
+    </script>
